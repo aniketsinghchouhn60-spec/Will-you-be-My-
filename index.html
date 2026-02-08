@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #ff758c, #ff7eb3);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.reel {
+    width: 360px;
+    height: 640px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 20px;
+    position: relative;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+h1, h2 {
+    color: white;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+}
+
+#yesBtn {
+    background: #ff3b6f;
+    color: white;
+    left: 20%;
+    bottom: 90px;
+}
+
+#noBtn {
+    background: white;
+    color: #ff3b6f;
+    right: 20%;
+    bottom: 90px;
+}
+
+#finalYes {
+    display: none;
+    background: #ff3b6f;
+    color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 90px;
+}
+
+.love-message {
+    display: none;
+    margin-top: 30px;
+    color: white;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    text-align: left;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.heart {
+    position: absolute;
+    top: -10px;
+    font-size: 22px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(700px);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="reel">
+    <h1>Soumya (Anu) 💕</h1>
+    <h2 id="question">Will you be my Valentine?</h2>
+
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 🙄</button>
+    <button id="finalYes">YES ❤️</button>
+
+    <div class="love-message" id="loveMessage">
+        <p><strong>Hey my love, thank you for saying yes. I love you Anu so much ❤️</strong></p>
+
+        <p>
+        Pata hai kisi insane ne mujhse kaha ki duniya ki sabse khubsurat ya kimti chij kya hai,
+        batao tho bol tho kuch bhi sakta tha jaise sona, chandi etc etc,
+        par phir bhi pata nahi kaha se labon se tera naam nikala
+        aur dimag me teri tasvir aa gayi.
+        </p>
+
+        <p>
+        Aur sach kahu tho — <em>sab nazro ka hi toh khel hai.</em>
+        Varna main toh apna dil kab ka haar chuka hoon tumhari naino mein.
+        </p>
+
+        <p>
+        Teri aankhon ke samne ye sheher kaun dekhega,
+        tu dariya si hai ye leher kaun dekhega.
+        Tu khubsurat se bhi zyada khubsurat hai,
+        tujhe dekhne ke baad Taj Mahal kaun dekhega.
+        </p>
+
+        <p>
+        Duniya chahe kuch bhi bole ki Aniket duniya ki sabse khubsurat cheez ye hai ya wo hai,
+        par logon ko kaun bataye tumhari aankhon ke samne
+        toh poora sansaar hi feeka hai.
+        </p>
+
+        <p>
+        Kyunki ishq ke rang bhi tumhare hone se hi hain.
+        Tum na ho meri zindagi mein toh ye duniya mere liye
+        black and white ho jaati hai.
+        </p>
+
+        <p>
+        Aur jab se tum aayi ho, sab kuch colourful ho gaya hai.
+        Log kehte hain apne partner se ki
+        “main tumhare liye chaand ya sitare laa sakta hoon”
+        par main toh woh bhi nahi kar sakta,
+        kyunki ab acha thodi lagega
+        chaand ko hi bolna ki chalo tumhare liye chaand le aata hoon.
+        </p>
+
+        <p>
+        Tum suraj toh nahi,
+        par meri zindagi ki roshni lagti ho.
+        Na sona, na chandi, na heera —
+        sirf tum haseen lagti ho.
+        </p>
+
+        <p>
+        Aur tumko sajne-savarne ki kya zarurat,
+        tum toh saadgi mein hi
+        zewar se zyada khubsurat lagti ho.
+        </p>
+
+        <p><strong>I love you so much, meri jaan 🥺❤️</strong></p>
+    </div>
+</div>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const finalYes = document.getElementById("finalYes");
+const question = document.getElementById("question");
+const loveMessage = document.getElementById("loveMessage");
+
+const texts = [
+  "Are you sure?",
+  "Really?",
+  "Try again",
+  "you don't love me 😔",
+  "then why are you clicking on no 🙄",
+  "then click on yes baby ❤️",
+  "still no why??",
+  "okay fine 😌 i removed one option"
+];
+
+let step = 0;
+
+noBtn.onclick = () => {
+  if (step < texts.length) {
+    noBtn.textContent = texts[step++];
+    noBtn.style.left = Math.random() * 60 + "%";
+    noBtn.style.top = Math.random() * 60 + "%";
+  } else {
+    noBtn.style.display = "none";
+    yesBtn.style.display = "none";
+    finalYes.style.display = "block";
+  }
+};
+
+yesBtn.onclick = showLove;
+finalYes.onclick = showLove;
+
+function showLove() {
+  question.textContent = "She said YES 💖";
+  yesBtn.style.display = noBtn.style.display = finalYes.style.display = "none";
+  loveMessage.style.display = "block";
+}
+
+/* Heart rain */
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "💖";
+  h.style.left = Math.random() * 100 + "%";
+  h.style.animationDuration = Math.random() * 3 + 3 + "s";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+}, 250);
+</script>
+
+</body>
+</html>
